@@ -2,175 +2,315 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nadira Umar – Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    /* ------------------ GLOBAL STYLES ------------------ */
     body {
-      font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
-      background: #fff0f6;
-      color: #333;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #001428, #00040a);
+      color: #e0e6f0;
+      overflow-x: hidden;
+      position: relative;
     }
+
+    h1, h2, h3 {
+      font-family: "Sora", sans-serif;
+    }
+
+    a {
+      color: #00aaff;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    /* ----------- SCROLL REVEAL ANIMATION ----------- */
+    .reveal {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* ------------------ FLOATING PARTICLES ------------------ */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #00aaff;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 10s infinite linear;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-2000px); }
+    }
+
+    /* ------------------ HEADER / HERO ------------------ */
     header {
       text-align: center;
-      padding: 3rem 1rem;
-      background: #ffb6c1;
+      padding: 6rem 1rem;
+      background: linear-gradient(135deg, #000814, #001a33);
       color: white;
+      box-shadow: 0 0 30px rgba(0, 150, 255, 0.3);
+      position: relative;
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.8rem;
+      font-size: 3.5rem;
+      text-shadow: 0 0 15px #00aaff;
     }
+
     header p {
-      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      opacity: 0.85;
     }
-    section {
-      padding: 3rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
+
+    /* ------------------ SECTION TITLES ------------------ */
     h2 {
       text-align: center;
-      margin-bottom: 2rem;
-      color: #ff69b4;
+      color: #00aaff;
+      text-shadow: 0 0 10px #0099dd;
+      font-size: 2.3rem;
+      margin-bottom: 3rem;
     }
+
+    /* ------------------ PROJECT CARDS ------------------ */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
+
     .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      background: #0a0f1a;
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 150, 255, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
     }
+
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 0 25px rgba(0, 150, 255, 0.7);
+      border-color: #00aaff;
     }
+
     .card h3 {
       margin-top: 0;
-      color: #ff1493;
     }
-    .contact a {
-      color: #ff1493;
-      text-decoration: none;
-      font-weight: bold;
+
+    .card h3 a {
+      font-size: 1.4rem;
+      color: #00c8ff;
+      text-shadow: 0 0 6px #0099dd;
     }
+
+    /* ------------------ TECH STACK ------------------ */
+    .tech-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .tech-icons span {
+      font-size: 1.1rem;
+      padding: 12px 20px;
+      border: 1px solid #005580;
+      border-radius: 10px;
+      background: rgba(0, 150, 255, 0.08);
+      box-shadow: 0 0 8px rgba(0, 150, 255, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .tech-icons span:hover {
+      background: #00aaff;
+      color: black;
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00aaff;
+    }
+
+    /* ------------------ RESUME BUTTON ------------------ */
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 12px 24px;
+      background: #00aaff;
+      color: black;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(0,150,255,0.7);
+      transition: 0.3s;
+    }
+
+    .resume-btn:hover {
+      background: #0088dd;
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0,150,255,1);
+    }
+
+    /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 2rem;
-      background: #ffb6c1;
-      color: white;
-    }
-    .resume-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 10px 20px;
-      background: #ff69b4;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      background: #00111f;
+      color: #88a5c7;
+      border-top: 1px solid #003355;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Header -->
+  <!-- FLOATING PARTICLES -->
+  <div class="particles" id="particles"></div>
+
+  <!-- HEADER -->
   <header>
     <h1>Nadira Umar</h1>
-    <p>Aspiring Computer Science Student | Python & Web Developer | UI/UX Enthusiast ✨</p>
+    <p> Computer Science Student | Python & Web Developer | UI/UX Enthusiast</p>
   </header>
 
-  <!-- About Me -->
+  <!-- ABOUT -->
   <section id="about">
     <h2>About Me</h2>
     <p>
-      Hi, I’m Nadira Umar 👋 — a curious and creative Computer Science student who enjoys turning ideas into real projects. 
-    I love building simple yet functional applications with Python and Flask, and designing clean, user-friendly interfaces.  
-    Beyond coding, I’m passionate about solving problems, learning new technologies, and making my work both practical and fun.  
-    My goal is to grow into a well-rounded developer who can create software that not only works, but also delights the people who use it.  
+      I am a dedicated and proactive Computer Science student with a strong interest in software development, problem-solving, and building practical applications. I enjoy learning new technologies, experimenting with ideas, and improving my skills through hands-on projects. My current focus is on web development, Python programming, and building tools that make everyday tasks easier. I am continuously expanding my knowledge and aiming to grow into a versatile developer capable of creating impactful and user-friendly solutions.
     </p>
   </section>
 
-  <!-- Projects -->
+  <!-- PROJECTS -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
+
       <div class="card">
-        <h3><a href="https://github.com/Deerah539/cute-notes-app" target="_blank">✨ Girly Notes App</a></h3>
-        <p>A Flask CRUD notes app with user authentication, hover animations, placeholder tips, and a character counter. Persistently stores notes in JSON files.</p>
+        <h3><a href="https://github.com/Deerah539/cute-notes-app">✨ Notes App</a></h3>
+        <p>A Flask CRUD notes app with authentication, animations, and persistent JSON storage.</p>
       </div>
+
       <div class="card">
-        <h3><a href="https://github.com/Deerah539/The-cozy-website" target="_blank">🍲 The Cozy Kitchen</a></h3>
-        <p>A responsive restaurant website showcasing Nigerian dishes. Features interactive menus, image gallery, and mobile-friendly navigation.</p>
+        <h3><a href="https://github.com/Deerah539/The-cozy-website">🍲 The Cozy Kitchen</a></h3>
+        <p>A mobile-responsive restaurant website showcasing Nigerian dishes with an image gallery and smooth navigation.</p>
       </div>
+
       <div class="card">
         <h3>💳 Bank App UI (Figma)</h3>
-        <p>Designed a modern banking app interface using Figma. Focused on intuitive layouts, accessibility, and visual hierarchy while refining usability through peer reviews.</p>
+        <p>A modern banking application UI focused on usability, visual balance, and user experience principles.</p>
       </div>
-      <!-- 🎵 Music Player Project -->
+
       <div class="card">
-        <h3><a href="https://github.com/Deerah539/music-player.git" target="_blank">🎶 Girly Music Player</a></h3>
-        <p>A fun and girly-themed music player built with HTML, CSS, and JavaScript. Features playlist support, autoplay, and a cute pink design for an enjoyable listening experience.</p>
+        <h3><a href="https://github.com/Deerah539/music-player">🎶 Music Player</a></h3>
+        <p>A JavaScript music player with playlist support, autoplay, and smooth interface animations.</p>
       </div>
+
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- TECH STACK -->
+  <section id="tech">
+    <h2>Tech Stack</h2>
+    <div class="tech-icons">
+      <span>🐍 Python</span>
+      <span>✨ Flask</span>
+      <span>💻 HTML5</span>
+      <span>🎨 CSS3</span>
+      <span>⚙️ Git & GitHub</span>
+      <span>🧩 C++</span>
+      <span>🖌️ Figma</span>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
   <section id="skills">
     <h2>Skills</h2>
     <p>
       <strong>Programming:</strong> Python, C++, HTML/CSS<br>
       <strong>Database:</strong> SQL (basic)<br>
-      <strong>Tools:</strong> Git, GitHub, Figma, Microsoft Office Suite<br>
-      <strong>Soft Skills:</strong> Communication, Teamwork, Time Management, Problem Solving
+      <strong>Tools:</strong> Git, GitHub, Figma, VS Code<br>
+      <strong>Soft Skills:</strong> Communication, Teamwork, Leadership, Time Management
     </p>
   </section>
 
-  <!-- Education -->
+  <!-- EDUCATION -->
   <section id="education">
     <h2>Education</h2>
     <p>
-      🎓 B.Sc. Computer Science – Veritas University, Abuja (2024 – 2028, Expected)<br>
-      🎓 B.Sc. Computer Science – University of the People (2023 – Present)<br>
+      🎓 B.Sc. Computer Science – Veritas University (2024 – 2028, expected)<br>
+      🎓 B.Sc. Computer Science – University of the People (2023 – Present)
     </p>
   </section>
 
-  <!-- Certifications -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <p>
-      ✅ Python Programming – Certificate of Completion<br>
-      ✅ C++ Programming – Certificate of Completion<br>
-      ✅ Introduction to Computer Science I & II<br>
-      ✅ Elementary Data Structures<br>
-      ✅ Building an Artificial Intelligence<br>
-    </p>
-  </section>
-
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <p>
       📧 Email: <a href="mailto:nadiraumar60@gmail.com">nadiraumar60@gmail.com</a><br>
       📱 Phone: 09161665686<br>
-      💻 GitHub: <a href="https://github.com/Deerah539" target="_blank">Deerah539</a><br>
-      🔗 LinkedIn: <a href="https://www.linkedin.com/in/nadira-umar-75a245330" target="_blank">Nadira Umar</a><br>
+      💻 GitHub: <a href="https://github.com/Deerah539">Deerah539</a><br>
+      🔗 LinkedIn: <a href="#">Nadira Umar</a>
     </p>
-<a class="resume-btn" href="final resume.pdf" target="_blank">📄 View Resume</a>
+    <a class="resume-btn" href="final resume.pdf" target="_blank">📄 View Resume</a>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Nadira Umar | Built with 💖 and HTML/CSS</p>
+    <p>© 2025 Nadira Umar | Built with 💻 & Passion</p>
   </footer>
+
+  <!-- ====== JAVASCRIPT FOR PARTICLES + SCROLL REVEAL ====== -->
+  <script>
+    /* --------- Scroll Reveal --------- */
+    const sections = document.querySelectorAll("section");
+    const reveal = () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) sec.classList.add("reveal");
+      });
+    };
+    window.addEventListener("scroll", reveal);
+    reveal();
+
+    /* --------- Floating Particles --------- */
+    const particleContainer = document.getElementById("particles");
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = Math.random() * 100 + "vh";
+      particle.style.animationDuration = 8 + Math.random() * 8 + "s";
+      particleContainer.appendChild(particle);
+    }
+  </script>
 
 </body>
 </html>
-
-
-
